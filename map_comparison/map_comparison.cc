@@ -1,6 +1,8 @@
 #include <iostream>
 #include <vector>
-
+#include <string>
+#include <map>
+#include <unordered_map>
 /////////////////////////////////////////
 // INCLUDE NECESSARY HEADER FILES HERE //
 /////////////////////////////////////////
@@ -11,17 +13,22 @@ void func_map (vector<pair<int,string>>& items)
 {
   cout << endl << "=== BEGIN func_map ===" << endl;
 
+  map<int, string> mapping;
   ////////////////////////////////////////////////
   // CREATE AN EMPTY map MAPPING int TO string. //
   ////////////////////////////////////////////////
-
-
+  
+  for (auto item:items) {
+    mapping.insert(item);
+  }
   ////////////////////////////////////////////
   // USING A RANGE-BASED for(...) LOOP,     //
   // INSERT EACH ITEM IN items INTO THE MAP //
   ////////////////////////////////////////////
 
-
+  for (auto items : mapping) {
+    cout << items.first << " " <<  items.second << endl;
+  }
   //////////////////////////////////////////////
   // USING A RANGE-BASED for(...) LOOP,       //
   // PRINT OUT EACH KEY-VALUE PAIR IN THE MAP //
@@ -35,13 +42,19 @@ void func_unordered_map (vector<pair<int,string>>& items)
 {
   cout << endl << "=== BEGIN func_unordered_map ===" << endl;
 
+  unordered_map<int, string> unorder_mapping;
   //////////////////////////////////////////////////////////
   // CREATE AN EMPTY unordered_map MAPPING int TO string. //
   //////////////////////////////////////////////////////////
 
-
-  /////////////////////////////////////////////
-  // USING A RANGE-BASED for(...) LOOP,      //
+  for (auto item:items) {
+    unorder_mapping.insert(item);
+    size_t size_map = unorder_mapping.size();
+    size_t bucket_map = unorder_mapping.bucket_count();
+    float load = (static_cast<double>(size_map) / bucket_map);
+    cout << "[N,B,LF]" << " = " << "[" << size_map << "," << bucket_map << "," << load << "]" << endl;  
+  }
+ // USING A RANGE-BASED for(...) LOOP,      //
   // INSERT EACH ITEM IN items INTO THE MAP. //
   // AFTER EACH INSERTION, PRINT OUT:        //
   //   o  THE SIZE OF THE MAP                //
@@ -51,7 +64,9 @@ void func_unordered_map (vector<pair<int,string>>& items)
   //   o  "[N,B,LF] = [3,10,0.4432]"         //
   /////////////////////////////////////////////
 
-
+  for (auto items : unorder_mapping) {
+    cout << items.first << " " << items.second << endl;
+  }
   ///////////////////////////////////////////////
   // USING A RANGE-BASED for(...) LOOP,        //
   // PRINT OUT EACH KEY-VALUE PAIR IN THE MAP. //
