@@ -29,7 +29,7 @@ void test_algorithms (int N)
   // WITH VALUES STARTING AT 5 //
   ///////////////////////////////
 
-  reverse(v.begin()+2, v.begin()+5);
+  reverse(v.begin()+3, v.end(5));
   print_vector(v);  
   ///////////////////////////////////////
   // USE reverse TO REVERSE THE VALUES //
